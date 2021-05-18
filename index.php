@@ -4,6 +4,17 @@ require_once('lib/tcpdf_min/tcpdf.php');
 require_once('lib/fpdi/autoload.php');
 use setasign\Fpdi\TcpdfFpdi;
  
+
+require("Rabbit.php");
+//echo Rabbit::zg2uni("ေနေကာင္္း");
+//echo Rabbit::uni2zg("ေနေကာင္္း");
+
+
+function uni2zg($str){
+    return Rabbit::uni2zg($str);
+}
+
+
 $pdf = new TcpdfFpdi();
 $pdf->SetMargins(0, 0, 0);
 $pdf->SetCellPadding(0);
@@ -19,8 +30,23 @@ $pdf->useTemplate($pdf->importPage(1));
 //$tcpdf_fonts = new TCPDF_FONTS();
 //$font = $tcpdf_fonts->addTTFfont('tcpdf/fonts/ipam.ttf');
 
-$pdf->SetFont('kozminproregular', '', 8);
+//$tcpdf_fonts = new TCPDF_FONTS();
+//$font = $tcpdf_fonts->addTTFfont('tcpdf/fonts/ipam.ttf');
 
+//$pdf->SetFont('kozminproregular', '', 8);
+
+// convert TTF font to TCPDF format and store it on the fonts folder
+// public static addTTFfont( $fontfile[,  $fonttype = '' ][,  $enc = '' ][,  $flags = 32 ][,  $outpath = '' ][,  $platid = 3 ][,  $encid = 1 ][,  $addcbbox = false ][,  $link = false ]) : (string)
+//$fontname = TCPDF_FONTS::addTTFfont('./font.ttf', 'TrueTypeUnicode', '', 32,'','',1);
+
+// use the font
+//$pdf->SetFont($fontname, '', 12, '', false);
+//$pdf->SetFont($fontname, '', 12, '', false);
+//$pdf->SetFont($font_family = 'pyidaungsu', $variant = '', $fontsize = 11);
+//$pdf->SetFont($font_family = 'myanmar3', $variant = '', $fontsize = 11);
+//$pdf->SetFont($font_family = 'notosan', $variant = '', $fontsize = 11);
+$pdf->SetFont($font_family = 'zawgyi', $variant = '', $fontsize = 11);
+//$pdf->SetFont($font_family = 'kozminproregular', $variant = '', $fontsize = 11);
 // $line_height = $line_start + $line ;
 
 // for line 1
@@ -36,19 +62,20 @@ function lineY($lineNo){
 }
 
 
+$pdf->Text(0, 0, uni2zg("သီဟိုဠ်မှ ဉာဏ်ကြီးရှင်သည် အာယုဝဍ္ဎနဆေးညွှန်းစာကို ဇလွန်ဈေးဘေး ဗာဒံပင်ထက် အဓိဋ္ဌာန်လျက် ဂဃနဏဖတ်ခဲ့သည်။")); // current_year
 // 32 နေရာစာ အချက်အလက် ဖြည့်သွင်း
-$pdf->Text(165, lineY(1), "2021"); // current_year
+$pdf->Text(165, lineY(1), uni2zg("ပြည်ထောင်စုမြန်မာနိုင်ငံတော်")); // current_year
 $pdf->Text(179, lineY(1), "04"); // current_month
 $pdf->Text(190, lineY(1), "28"); // current_date
 
-$pdf->Text(34,  lineY(2), "name"); // name
+$pdf->Text(34,  lineY(2), uni2zg("ပြည်ထောင်စုမြန်မာနိုင်ငံတော်")); // name
 
-$pdf->Text(34,  lineY(3), "name_japan"); // japan_name
-$pdf->Text(79, lineY(3), "male"); // gender_id
+$pdf->Text(34,  lineY(3), uni2zg("ပြည်ထောင်စုမြန်မာနိုင်ငံတော်")); // japan_name
+$pdf->Text(79, lineY(3), uni2zg("ပြည်ထောင်စုမြန်မာနိုင်ငံတော်")); // gender_id
 $pdf->Text(89, lineY(3), "2021"); // date_of_birth
 $pdf->Text(104, lineY(3), "04"); // date_of_birth
 $pdf->Text(116, lineY(3), "28"); // date_of_birth
-$pdf->Text(149.7, lineY(3), "nationality_id"); // nationality_id
+$pdf->Text(149.7, lineY(3), uni2zg("မြန်မာ နိုင်ငံသား")); // nationality_id
 
 $pdf->Text(116, lineY(4), "27"); // martial_status
 $pdf->Text(149.7, lineY(4), "martial_status"); // martial_status
