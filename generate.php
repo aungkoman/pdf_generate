@@ -1,6 +1,6 @@
 <?php
-//header("Content-type: application/pdf");
-header('Content-Type: text/html; charset=utf-8');
+header("Content-type: application/pdf");
+//header('Content-Type: text/html; charset=utf-8');
 require_once('./lib/tcpdf_min/tcpdf.php');
 require_once('./lib/fpdi/autoload.php');
 use setasign\Fpdi\TcpdfFpdi;
