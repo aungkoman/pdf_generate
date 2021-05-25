@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 header("Content-type: application/pdf");
 //header('Content-Type: text/html; charset=utf-8');
 require_once('./lib/tcpdf_min/tcpdf.php');
@@ -25,6 +28,7 @@ $pdf->setSourceFile('template.pdf');
 $data = $_POST;
 
 //$data = json_decode($postData,true);
+echo json_encode($data);
 
 
 $name = isset($data['name']) ? $data['name'] : 'name';
