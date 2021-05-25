@@ -2,7 +2,7 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-header("Content-type: application/pdf");
+//header("Content-type: application/pdf");
 //header('Content-Type: text/html; charset=utf-8');
 require_once('./lib/tcpdf_min/tcpdf.php');
 require_once('./lib/fpdi/autoload.php');
@@ -28,7 +28,7 @@ $pdf->setSourceFile('template.pdf');
 $data = $_POST;
 
 //$data = json_decode($postData,true);
-echo json_encode($data);
+//echo json_encode($data);
 
 
 $name = isset($data['name']) ? $data['name'] : 'name';
@@ -67,5 +67,5 @@ $pdf->Text(218.5, 124.9, uni2zg($job));
 
 $pdf->Text(218.5, 161.0, uni2zg($website)); 
 
-//$pdf->Output(sprintf("business_card_%s.pdf", time()), 'I');
+$pdf->Output(sprintf("business_card_%s.pdf", time()), 'I');
 ?>
