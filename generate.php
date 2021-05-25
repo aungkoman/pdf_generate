@@ -67,5 +67,5 @@ $pdf->Text(218.5, 124.9, uni2zg($job));
 
 $pdf->Text(218.5, 161.0, uni2zg($website)); 
 
-$pdf->Output(sprintf("business_card_%s.pdf", time()), 'I');
+//$pdf->Output(sprintf("business_card_%s.pdf", time()), 'I');
 ?>
