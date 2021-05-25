@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 require_once('./lib/tcpdf_min/tcpdf.php');
 require_once('./lib/fpdi/autoload.php');
 use setasign\Fpdi\TcpdfFpdi;
-require("./Rabbit.php");
+require("./rabbit.php");
 
 
 function uni2zg($str){
